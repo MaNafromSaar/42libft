@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 11:30:36 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/11 10:12:48 by mnaumann         ###   ########.fr       */
+/*   Created: 2024/03/13 10:14:56 by mnaumann          #+#    #+#             */
+/*   Updated: 2024/03/13 10:52:33 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
-	size_t	j;
+	t_list	*tmp;
 
-	i = 0;
-	j = 0;
-	if (dest == (void *)0 || src == (void *)0)
-		return (0);
-	while (src[j] && (i + 1) < size)
+	tmp = *lst;
+	if (!new)
+		return ;
+	if (!*lst)
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
+		*lst = new;
+		return ;
 	}
-	if (i < size)
-		dest[i] = '\0';
-	while (src[j])
-		j++;
-	return (j);
+	while (tmp->next != 0 && tmp)
+		tmp = tmp->next;
+	tmp->next = new;
+	new->next = (0);
+	return ;
 }

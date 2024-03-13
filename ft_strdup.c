@@ -6,13 +6,13 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:39:26 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/06 21:16:11 by mnaumann         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:14:25 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	int		i;
 	int		j;

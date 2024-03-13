@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:33:37 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/08 13:29:40 by mnaumann         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:38:56 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ int	ft_atoi(const char *str)
 	result = 0;
 	while (*str == 32 || (8 < *str && *str < 14))
 		str++;
+	if ((*str == '+' || *str == '-') && ft_isdigit(*(str + 1)))
+	{
+		if (*str == '-')
+			sign = sign * -1;
+		str++;
+	}
 	while (*str)
 	{
-		if ((*str == '+' || *str == '-') && ft_isdigit(*(str + 1)))
-		{
-			if (*str == '-')
-				sign = sign * -1;
-			str++;
-		}
-		else if (ft_isdigit(*str))
+		if (ft_isdigit(*str))
 		{
 			result = result * 10 + (*str - 48);
 			str++;

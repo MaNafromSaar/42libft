@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 11:30:36 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/11 10:12:48 by mnaumann         ###   ########.fr       */
+/*   Created: 2024/03/12 16:12:12 by mnaumann          #+#    #+#             */
+/*   Updated: 2024/03/12 16:35:18 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-	size_t	j;
+	char	tmp[1];
 
-	i = 0;
-	j = 0;
-	if (dest == (void *)0 || src == (void *)0)
-		return (0);
-	while (src[j] && (i + 1) < size)
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	if (i < size)
-		dest[i] = '\0';
-	while (src[j])
-		j++;
-	return (j);
+	tmp[0] = c;
+	write(fd, tmp, 1);
 }

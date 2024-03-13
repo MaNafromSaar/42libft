@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 11:30:36 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/11 10:12:48 by mnaumann         ###   ########.fr       */
+/*   Created: 2024/03/12 16:53:51 by mnaumann          #+#    #+#             */
+/*   Updated: 2024/03/12 17:21:19 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_putnbr_recursive(int nb, int fd)
 {
-	size_t	i;
-	size_t	j;
+	char	digit;
 
-	i = 0;
-	j = 0;
-	if (dest == (void *)0 || src == (void *)0)
-		return (0);
-	while (src[j] && (i + 1) < size)
+	if (nb / 10 != 0)
 	{
-		dest[i] = src[j];
-		i++;
-		j++;
+		ft_putnbr_recursive(nb / 10, fd);
 	}
-	if (i < size)
-		dest[i] = '\0';
-	while (src[j])
-		j++;
-	return (j);
+	digit = (nb % 10) + '0';
+	write(fd, &digit, 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		if (n == -2147483648)
+		{
+			write(fd, "2147483648", 10);
+			return ;
+		}
+		n = -n;
+	}
+	else if (n == 0)
+	{
+		write(fd, "0", 1);
+		return ;
+	}
+	return (ft_putnbr_recursive(n, fd));
 }

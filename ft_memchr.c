@@ -6,7 +6,7 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:39:40 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/08 09:16:51 by mnaumann         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:09:27 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*str;
+	unsigned char	*str;
+	unsigned char	cc;
 
-	str = (char *)s;
+	cc = c;
+	str = (unsigned char *)s;
 	while (n > 0)
 	{
-		if (*str == c % 256)
-		{
+		if (*str == cc)
 			return ((void *)str);
-		}
 		else
 		{
 			str++;

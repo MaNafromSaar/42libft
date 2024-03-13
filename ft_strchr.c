@@ -6,22 +6,19 @@
 /*   By: mnaumann <mnaumann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:14:07 by mnaumann          #+#    #+#             */
-/*   Updated: 2024/03/08 09:23:13 by mnaumann         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:40:42 by mnaumann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char const *s, int c)
 {
-	while (*s)
+	while (*s != (char)c)
 	{
-		if (*s == c % 256 || c == '\0')
+		if (*s == '\0')
 		{
-			return ((char *)s);
+			return (0);
 		}
-		else
-		{
-			s++;
-		}
+		s++;
 	}
-	return (0);
+	return ((char *)s);
 }
